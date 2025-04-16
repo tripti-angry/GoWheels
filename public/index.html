@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoWheels - Cab Booking Service</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <span class="logo-icon"><img src="img/logo-symbol.png" alt="gowheels logo"></span>
+                    
+                </div>
+                <div class="nav-links">
+                    <a href="index.html" class="active">Home</a>
+                    <a href="services.html">Services</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="dashboard.html">Dashboard</a>
+                </div>
+                <div class="auth-buttons">
+                    <button class="btn btn-outline-primary" id="loginBtn">Login</button>
+                    <button class="btn btn-primary" id="signupBtn">Sign Up</button>
+                </div>
+
+                <div class="user-panel" style="display: none;">
+                    <span id="userWelcome">Welcome, User</span>
+                    <button class="btn btn-outline-primary" id="logoutBtn">Logout</button>
+                </div>
+                <button class="mobile-menu-btn">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Your Ride, One Tap Away</h1>
+                <p>Book a reliable cab in minutes with GoWheels. Fast, safe, and affordable rides available 24/7.</p>
+                <a href="#booking" class="btn btn-primary">Book Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section
+    <section class="booking-section" id="booking">
+        <div class="container">
+            <div class="booking-container">
+                <div class="form-tabs">
+                    <div class="form-tab active" data-tab="city-taxi">City Taxi</div>
+                    <div class="form-tab" data-tab="outstation">Outstation</div>
+                    <div class="form-tab" data-tab="rentals">Rentals</div>
+                </div>
+                <form class="booking-form" id="cityTaxiForm">
+                    <div class="form-group">
+                        <label for="pickup-location">Pickup Location</label>
+                        <input type="text" id="pickup-location" class="form-control" placeholder="Enter pickup address">
+                    </div>
+                    <div class="form-group">
+                        <label for="drop-location">Drop Location</label>
+                        <input type="text" id="drop-location" class="form-control" placeholder="Enter destination">
+                    </div>
+                    <div class="form-group">
+                        <label for="pickup-date">Date</label>
+                        <input type="date" id="pickup-date" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="pickup-time">Time</label>
+                        <input type="time" id="pickup-time" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="cab-type">Cab Type</label>
+                        <select id="cab-type" class="form-control">
+                            <option value="mini">Mini</option>
+                            <option value="sedan">Sedan</option>
+                            <option value="suv">SUV</option>
+                            <option value="premium">Premium</option>
+                        </select>
+                    </div>
+                    <div class="form-submit">
+                        <button type="button" class="btn btn-primary" id="bookNowBtn">Book Now</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section> -->
+
+
+    <div class="booking-container">
+        <div class="header">
+           
+            <div class="ride-options">
+                <div class="ride-option active">
+                    <div class="ride-option-icon">🚕</div>
+                    <div>City Taxi</div>
+                </div>
+                <div class="ride-option">
+                    <div class="ride-option-icon">🚗</div>
+                    <div>Outstation</div>
+                </div>
+                <div class="ride-option">
+                    <div class="ride-option-icon">⏱️</div>
+                    <div>Rentals</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="address-form">
+            <div class="address-inputs">
+                <div class="location-dot pickup-dot"></div>
+                <div class="vertical-line"></div>
+                <div class="location-dot destination-dot"></div>
+                <input type="text" class="address-input" placeholder="Enter pickup location">
+                <input type="text" class="address-input" placeholder="Where to?">
+            </div>
+        </div>
+        
+        <div class="more-options">
+            <div class="option-title">Choose a ride</div>
+            <div class="ride-cards">
+                <div class="ride-card selected">
+                    <div class="ride-icon">🚗</div>
+                    <div class="ride-name">Mini</div>
+                    <div class="ride-price">₹100-120</div>
+                </div>
+                <div class="ride-card">
+                    <div class="ride-icon">🚙</div>
+                    <div class="ride-name">Sedan</div>
+                    <div class="ride-price">₹150-180</div>
+                </div>
+                <div class="ride-card">
+                    <div class="ride-icon">🚐</div>
+                    <div class="ride-name">SUV</div>
+                    <div class="ride-price">₹200-250</div>
+                </div>
+                <div class="ride-card">
+                    <div class="ride-icon">✨</div>
+                    <div class="ride-name">Premium</div>
+                    <div class="ride-price">₹300-350</div>
+                </div>
+            </div>
+            
+            <div class="datetime-selector">
+                <input type="date" class="datetime-input" id="pickup-date">
+                <input type="time" class="datetime-input" id="pickup-time">
+            </div>
+
+            <button class="book-btn">Book Now</button>
+
+        </div>
+        
+
+    <!-- Available Drivers Section -->
+<section id="availableDrivers" style="display: none;">
+    <div class="container">
+        <h2>Available Drivers</h2>
+        <div id="driversGrid" class="drivers-grid"></div>
+    </div>
+</section>
+
+<!-- Trip Details Section -->
+<section id="tripDetails" style="display: none;">
+    <div class="container">
+        <h2>Trip Details</h2>
+        <div id="tripInfo" class="trip-info"></div>
+        <div class="trip-actions">
+            <button id="completeTrip" class="btn btn-primary">Complete Trip</button>
+            <button id="cancelTrip" class="btn btn-outline-primary">Cancel Trip</button>
+        </div>
+    </div>
+</section>
+
+<!-- Payment Section -->
+<section id="paymentSection" style="display: none;">
+    <div class="container">
+        <h2>Payment</h2>
+        <div id="fareDetails" class="fare-details"></div>
+        <div class="payment-methods">
+            <h3>Select Payment Method</h3>
+            <div class="payment-option">
+                <input type="radio" id="payment-cash" name="payment-method" value="cash" checked>
+                <label for="payment-cash">Cash</label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" id="payment-card" name="payment-method" value="card">
+                <label for="payment-card">Credit/Debit Card</label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" id="payment-upi" name="payment-method" value="upi">
+                <label for="payment-upi">UPI</label>
+            </div>
+            <button id="payNow" class="btn btn-primary">Pay Now</button>
+        </div>
+    </div>
+</section>
+
+
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Choose from a variety of cab services tailored to meet your transportation needs.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="img/city-taxi.png" alt="City Taxi Service">
+                    </div>
+                    <div class="service-content">
+                        <h3>City Taxi</h3>
+                        <p>Get around the city quickly and affordably with our city taxi service. Available 24/7.</p>
+                        <a href="services.html#city-taxi" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="img/outstation.avif" alt="Outstation Taxi Service">
+                    </div>
+                    <div class="service-content">
+                        <h3>Outstation</h3>
+                        <p>Planning a trip out of town? Our outstation service offers comfortable intercity travel.</p>
+                        <a href="services.html#outstation" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="img/rental.avif" alt="Rental Taxi Service">
+                    </div>
+                    <div class="service-content">
+                        <h3>Rentals</h3>
+                        <p>Need a cab for multiple stops? Our rental packages give you flexibility and convenience.</p>
+                        <a href="services.html#rentals" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>How It Works</h2>
+                <p>Booking a ride with GoWheels is quick and easy. Just follow these simple steps.</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Book</h3>
+                    <p>Enter your pickup and drop location, select cab type and schedule your ride.</p>
+                </div>
+                <div class="connector"></div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Confirm</h3>
+                    <p>Confirm your booking details and payment method for a seamless experience.</p>
+                </div>
+                <div class="connector"></div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Ride</h3>
+                    <p>Get picked up by our professional driver and enjoy your comfortable journey.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Section -->
+    <section class="app-section">
+        <div class="container">
+            <div class="app-content">
+                <div class="app-text">
+                    <h2>Download Our Mobile App</h2>
+                    <p>Get the full GoWheels experience on your smartphone. Book rides, track your driver, and manage payments - all in one place.</p>
+                    <div class="app-buttons">
+                        <a href="#" class="app-button">
+                            <div class="app-icon">📱</div>
+                            <div class="app-button-text">
+                                <span class="app-button-small">Download on the</span>
+                                <span class="app-button-big">App Store</span>
+                            </div>
+                        </a>
+                        <a href="#" class="app-button">
+                            <div class="app-icon">🤖</div>
+                            <div class="app-button-text">
+                                <span class="app-button-small">Get it on</span>
+                                <span class="app-button-big">Google Play</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="app-image">
+                    <img src="img/logo-name.png" alt="GoWheels App" class="app-mockup">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Customers Say</h2>
+                <p>Don't just take our word for it. Here's what our customers have to say about their GoWheels experience.</p>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <div class="user-avatar">👤</div>
+                    <p class="testimonial-content">"GoWheels has been my go-to cab service for the past year. Their drivers are professional, cars are clean, and the app is super easy to use. Highly recommended!"</p>
+                    <h4 class="user-name">Priya Sharma</h4>
+                    <p class="user-location">Mumbai, India</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>GoWheels</h3>
+                    <p>Your trusted partner for reliable and affordable cab services. Available 24/7 to meet all your transportation needs.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon">f</a>
+                        <a href="#" class="social-icon">t</a>
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">ig</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="services.html#city-taxi">City Taxi</a></li>
+                        <li><a href="services.html#outstation">Outstation</a></li>
+                        <li><a href="services.html#rentals">Rentals</a></li>
+                        <li><a href="services.html#airport">Airport Transfer</a></li>
+                        <li><a href="services.html#corporate">Corporate Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li>IIITD Okhla Phase 3</li>
+                        <li>Phone: +91 98765 43210</li>
+                        <li>Email: info@gowheels.com</li>
+                        <li>Working Hours: 24/7</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2025 GoWheels Cab Service. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Login to Your Account</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="login-username">Username</label>
+                    <input type="text" id="login-username" class="form-control" placeholder="Enter your username">
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" class="form-control" placeholder="Enter your password">
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+                    <label>
+                        <input type="checkbox"> Remember me
+                    </label>
+                    <a href="#" style="color: var(--primary);">Forgot Password?</a>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" id="cancelLoginBtn">Cancel</button>
+                <button class="btn btn-primary" id="submitLoginBtn">Login</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signupModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create an Account</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" class="form-control" placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" class="form-control" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="signup-phone">Phone Number</label>
+                    <input type="tel" id="signup-phone" class="form-control" placeholder="Enter your phone number">
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" class="form-control" placeholder="Choose a password">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" id="cancelSignupBtn">Cancel</button>
+                <button class="btn btn-primary" id="submitSignupBtn">Sign Up</button>
+            </div>
+
+            <div class="form-group">
+                <label for="signup-usertype">Register as</label>
+                <select id="signup-usertype" class="form-control">
+                    <option value="passenger">Passenger</option>
+                    <option value="driver">Driver</option>
+                </select>
+            </div>
+            <div id="driver-fields" style="display: none;">
+                <div class="form-group">
+                    <label for="driver-license">Driver's License Number</label>
+                    <input type="text" id="driver-license" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="car-model">Car Model</label>
+                    <input type="text" id="car-model" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="car-type">Car Type</label>
+                    <select id="car-type" class="form-control">
+                        <option value="mini">Mini</option>
+                        <option value="sedan">Sedan</option>
+                        <option value="suv">SUV</option>
+                        <option value="premium">Premium</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
