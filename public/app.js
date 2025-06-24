@@ -894,7 +894,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="trip-details-card">
                                 <div class="trip-status-badge ${trip.Trip_Status.toLowerCase()}">${trip.Trip_Status}</div>
                                 <div class="trip-info-row">
-                                                                <div class="trip-info-row">
                                     <strong>Date:</strong> ${new Date(trip.Trip_Date).toLocaleString()}
                                 </div>
                                 <div class="trip-info-row">
@@ -932,5 +931,54 @@ document.addEventListener('DOMContentLoaded', () => {
             } catch (error) {
                 this.showAlert('Failed to load trip details: ' + error.message);
             }
+        },
+        
+        /**
+         * Get rating stars HTML
+         * @param {number} rating - The rating value
+         * @return {string} HTML for rating stars
+         */
+        getRatingStars(rating) {
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 !== 0;
+            let starsHTML = '';
+            
+            // Add full stars
+            for (let i = 0; i < fullStars; i++) {
+                starsHTML += '★';
+            }
+            
+            // Add half star if needed
+            if (hasHalfStar) {
+                starsHTML += '☆';
+            }
+            
+            // Add empty stars to make 5 total
+            const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+            for (let i = 0; i < emptyStars; i++) {
+                starsHTML += '☆';
+            }
+            
+            return starsHTML;
+        },
+        
+        /**
+         * Initialize FAQ functionality
+         */
+        initFaq() {
+            // FAQ functionality would be implemented here
+            // This is a placeholder for FAQ-related initialization
+        },
+        
+        /**
+         * Initialize statistics
+         */
+        initStatistics() {
+            // Statistics functionality would be implemented here
+            // This is a placeholder for statistics-related initialization
         }
-    }
+    };
+    
+    // Initialize the application
+    GoWheelsApp.init();
+});
