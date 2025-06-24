@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GoWheels - Cab Booking Service</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 </head>
 <body>
     <!-- Header -->
@@ -14,14 +13,12 @@
             <nav>
                 <div class="logo">
                     <span class="logo-icon"><img src="img/logo-symbol.png" alt="gowheels logo"></span>
-                    
                 </div>
                 <div class="nav-links">
                     <a href="index.html" class="active">Home</a>
                     <a href="services.html">Services</a>
                     <a href="about.html">About</a>
                     <a href="contact.html">Contact</a>
-                    <a href="dashboard.html">Dashboard</a>
                 </div>
                 <div class="auth-buttons">
                     <button class="btn btn-outline-primary" id="loginBtn">Login</button>
@@ -48,53 +45,9 @@
         </div>
     </section>
 
-    <!-- Booking Section
-    <section class="booking-section" id="booking">
-        <div class="container">
-            <div class="booking-container">
-                <div class="form-tabs">
-                    <div class="form-tab active" data-tab="city-taxi">City Taxi</div>
-                    <div class="form-tab" data-tab="outstation">Outstation</div>
-                    <div class="form-tab" data-tab="rentals">Rentals</div>
-                </div>
-                <form class="booking-form" id="cityTaxiForm">
-                    <div class="form-group">
-                        <label for="pickup-location">Pickup Location</label>
-                        <input type="text" id="pickup-location" class="form-control" placeholder="Enter pickup address">
-                    </div>
-                    <div class="form-group">
-                        <label for="drop-location">Drop Location</label>
-                        <input type="text" id="drop-location" class="form-control" placeholder="Enter destination">
-                    </div>
-                    <div class="form-group">
-                        <label for="pickup-date">Date</label>
-                        <input type="date" id="pickup-date" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="pickup-time">Time</label>
-                        <input type="time" id="pickup-time" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="cab-type">Cab Type</label>
-                        <select id="cab-type" class="form-control">
-                            <option value="mini">Mini</option>
-                            <option value="sedan">Sedan</option>
-                            <option value="suv">SUV</option>
-                            <option value="premium">Premium</option>
-                        </select>
-                    </div>
-                    <div class="form-submit">
-                        <button type="button" class="btn btn-primary" id="bookNowBtn">Book Now</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section> -->
-
-
-    <div class="booking-container">
+    <!-- Booking Section -->
+    <div class="booking-container" id="booking">
         <div class="header">
-           
             <div class="ride-options">
                 <div class="ride-option active">
                     <div class="ride-option-icon">🚕</div>
@@ -152,55 +105,52 @@
             </div>
 
             <button class="book-btn">Book Now</button>
-
         </div>
-        
+    </div>
 
     <!-- Available Drivers Section -->
-<section id="availableDrivers" style="display: none;">
-    <div class="container">
-        <h2>Available Drivers</h2>
-        <div id="driversGrid" class="drivers-grid"></div>
-    </div>
-</section>
-
-<!-- Trip Details Section -->
-<section id="tripDetails" style="display: none;">
-    <div class="container">
-        <h2>Trip Details</h2>
-        <div id="tripInfo" class="trip-info"></div>
-        <div class="trip-actions">
-            <button id="completeTrip" class="btn btn-primary">Complete Trip</button>
-            <button id="cancelTrip" class="btn btn-outline-primary">Cancel Trip</button>
+    <section id="availableDrivers" style="display: none;">
+        <div class="container">
+            <h2>Available Drivers</h2>
+            <div id="driversGrid" class="drivers-grid"></div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Payment Section -->
-<section id="paymentSection" style="display: none;">
-    <div class="container">
-        <h2>Payment</h2>
-        <div id="fareDetails" class="fare-details"></div>
-        <div class="payment-methods">
-            <h3>Select Payment Method</h3>
-            <div class="payment-option">
-                <input type="radio" id="payment-cash" name="payment-method" value="cash" checked>
-                <label for="payment-cash">Cash</label>
+    <!-- Trip Details Section -->
+    <section id="tripDetails" style="display: none;">
+        <div class="container">
+            <h2>Trip Details</h2>
+            <div id="tripInfo" class="trip-info"></div>
+            <div class="trip-actions">
+                <button id="completeTrip" class="btn btn-primary">Complete Trip</button>
+                <button id="cancelTrip" class="btn btn-outline-primary">Cancel Trip</button>
             </div>
-            <div class="payment-option">
-                <input type="radio" id="payment-card" name="payment-method" value="card">
-                <label for="payment-card">Credit/Debit Card</label>
-            </div>
-            <div class="payment-option">
-                <input type="radio" id="payment-upi" name="payment-method" value="upi">
-                <label for="payment-upi">UPI</label>
-            </div>
-            <button id="payNow" class="btn btn-primary">Pay Now</button>
         </div>
-    </div>
-</section>
+    </section>
 
-
+    <!-- Payment Section -->
+    <section id="paymentSection" style="display: none;">
+        <div class="container">
+            <h2>Payment</h2>
+            <div id="fareDetails" class="fare-details"></div>
+            <div class="payment-methods">
+                <h3>Select Payment Method</h3>
+                <div class="payment-option">
+                    <input type="radio" id="payment-cash" name="payment-method" value="cash" checked>
+                    <label for="payment-cash">Cash</label>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" id="payment-card" name="payment-method" value="card">
+                    <label for="payment-card">Credit/Debit Card</label>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" id="payment-upi" name="payment-method" value="upi">
+                    <label for="payment-upi">UPI</label>
+                </div>
+                <button id="payNow" class="btn btn-primary">Pay Now</button>
+            </div>
+        </div>
+    </section>
 
     <!-- Services Section -->
     <section class="services">
@@ -371,95 +321,6 @@
         </div>
     </footer>
 
-    <!-- Login Modal -->
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Login to Your Account</h2>
-                <button class="close-modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="login-username">Username</label>
-                    <input type="text" id="login-username" class="form-control" placeholder="Enter your username">
-                </div>
-                <div class="form-group">
-                    <label for="login-password">Password</label>
-                    <input type="password" id="login-password" class="form-control" placeholder="Enter your password">
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
-                    <label>
-                        <input type="checkbox"> Remember me
-                    </label>
-                    <a href="#" style="color: var(--primary);">Forgot Password?</a>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn" id="cancelLoginBtn">Cancel</button>
-                <button class="btn btn-primary" id="submitLoginBtn">Login</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Signup Modal -->
-    <div class="modal" id="signupModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Create an Account</h2>
-                <button class="close-modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="signup-name">Full Name</label>
-                    <input type="text" id="signup-name" class="form-control" placeholder="Enter your full name">
-                </div>
-                <div class="form-group">
-                    <label for="signup-email">Email</label>
-                    <input type="email" id="signup-email" class="form-control" placeholder="Enter your email">
-                </div>
-                <div class="form-group">
-                    <label for="signup-phone">Phone Number</label>
-                    <input type="tel" id="signup-phone" class="form-control" placeholder="Enter your phone number">
-                </div>
-                <div class="form-group">
-                    <label for="signup-password">Password</label>
-                    <input type="password" id="signup-password" class="form-control" placeholder="Choose a password">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn" id="cancelSignupBtn">Cancel</button>
-                <button class="btn btn-primary" id="submitSignupBtn">Sign Up</button>
-            </div>
-
-            <div class="form-group">
-                <label for="signup-usertype">Register as</label>
-                <select id="signup-usertype" class="form-control">
-                    <option value="passenger">Passenger</option>
-                    <option value="driver">Driver</option>
-                </select>
-            </div>
-            <div id="driver-fields" style="display: none;">
-                <div class="form-group">
-                    <label for="driver-license">Driver's License Number</label>
-                    <input type="text" id="driver-license" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="car-model">Car Model</label>
-                    <input type="text" id="car-model" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="car-type">Car Type</label>
-                    <select id="car-type" class="form-control">
-                        <option value="mini">Mini</option>
-                        <option value="sedan">Sedan</option>
-                        <option value="suv">SUV</option>
-                        <option value="premium">Premium</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="app.js"></script>
+    <script type="module" src="js/app.js"></script>
 </body>
 </html>
