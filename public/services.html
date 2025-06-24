@@ -19,11 +19,14 @@
                     <a href="services.html" class="active">Services</a>
                     <a href="about.html">About</a>
                     <a href="contact.html">Contact</a>
-                    <a href="dashboard.html">Dashboard</a>
                 </div>
                 <div class="auth-buttons">
                     <button class="btn btn-outline-primary" id="loginBtn">Login</button>
                     <button class="btn btn-primary" id="signupBtn">Sign Up</button>
+                </div>
+                <div class="user-panel" style="display: none;">
+                    <span id="userWelcome">Welcome, User</span>
+                    <button class="btn btn-outline-primary" id="logoutBtn">Logout</button>
                 </div>
                 <button class="mobile-menu-btn">☰</button>
             </nav>
@@ -31,177 +34,48 @@
     </header>
 
     <!-- Page Banner -->
-    <section class="page-banner">
+    <section class="hero">
         <div class="container">
-            <h1>Our Services</h1>
-            <p>Discover our range of premium transportation services designed to meet your every need</p>
+            <div class="hero-content">
+                <h1>Our Services</h1>
+                <p>Discover our range of premium transportation services designed to meet your every need</p>
+            </div>
         </div>
     </section>
 
     <!-- Services Content -->
-    <section class="service-block" id="city-taxi">
+    <section class="services">
         <div class="container">
-            <div class="service-detail">
-                <div class="service-detail-text">
-                    <h2>City Taxi</h2>
-                    <p>Get around the city quickly and affordably with our reliable city taxi service. Whether you're heading to work, meeting friends, or running errands, our fleet of well-maintained vehicles and professional drivers ensure you reach your destination safely and on time.</p>
-                    <ul>
-                        <li>Available 24/7, 365 days a year</li>
-                        <li>Quick pickup within minutes of booking</li>
-                        <li>Professional, verified drivers</li>
-                        <li>Clean, air-conditioned vehicles</li>
-                        <li>Multiple payment options</li>
-                        <li>Live tracking through our mobile app</li>
-                    </ul>
-                    <a href="#booking" class="btn btn-primary">Book City Taxi</a>
-                </div>
-                <div class="service-detail-image">
-                    <img src="img/services-city-taxi.png" alt="City Taxi Service">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="service-block" id="outstation">
-        <div class="container">
-            <div class="service-detail">
-                <div class="service-detail-text">
-                    <h2>Outstation</h2>
-                    <p>Planning a trip out of town? Our outstation service offers comfortable intercity travel with experienced drivers who know the routes well. Whether it's a business trip, weekend getaway, or family vacation, we've got your transportation needs covered.</p>
-                    <ul>
-                        <li>One-way and round trip options available</li>
-                        <li>Spacious, comfortable vehicles for long journeys</li>
-                        <li>Experienced drivers familiar with intercity routes</li>
-                        <li>Transparent pricing with no hidden charges</li>
-                        <li>Multi-day booking options</li>
-                        <li>24/7 customer support throughout your journey</li>
-                    </ul>
-                    <a href="#booking" class="btn btn-primary">Book Outstation</a>
-                </div>
-                <div class="service-detail-image">
-                    <img src="img/services-outstation.webp" alt="Outstation Service">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="service-block" id="rentals">
-        <div class="container">
-            <div class="service-detail">
-                <div class="service-detail-text">
-                    <h2>Rentals</h2>
-                    <p>Need a cab for multiple stops? Our rental packages give you flexibility and convenience for all your travel needs. Perfect for shopping trips, tourist sightseeing, business meetings, or any occasion when you need a vehicle at your disposal.</p>
-                    <ul>
-                        <li>Flexible hourly packages (4, 8, or 12 hours)</li>
-                        <li>Fixed pricing based on time, not distance</li>
-                        <li>Make unlimited stops within your rental period</li>
-                        <li>Option to extend your rental on-the-go</li>
-                        <li>Choose from various vehicle types based on your needs</li>
-                        <li>Dedicated driver stays with you throughout your journey</li>
-                    </ul>
-                    <a href="#booking" class="btn btn-primary">Book Rental</a>
-                </div>
-                <div class="service-detail-image">
-                    <img src="img/car-rental.webp" alt="Rental Service">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="service-block" id="airport">
-        <div class="container">
-            <div class="service-detail">
-                <div class="service-detail-text">
-                    <h2>Airport Transfer</h2>
-                    <p>Start or end your journey hassle-free with our reliable airport transfer service. We monitor flight timings to ensure punctual pickups and drop-offs, allowing you to focus on your travel without worrying about transportation.</p>
-                    <ul>
-                        <li>Flight tracking to adjust for delays or early arrivals</li>
-                        <li>Meet and greet service at the airport</li>
-                        <li>Assistance with luggage</li>
-                        <li>Spacious vehicles to accommodate luggage</li>
-                        <li>Pre-book for guaranteed availability</li>
-                        <li>Fixed rates with no surge pricing</li>
-                    </ul>
-                    <a href="#booking" class="btn btn-primary">Book Airport Transfer</a>
-                </div>
-                <div class="service-detail-image">
-                    <img src="img/airport-transfer.webp" alt="Airport Transfer Service">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <br>
-
-    <!-- Booking Section -->
-    <section class="booking-section" id="booking">
-        <div class="container">
-            <div class="section-title">
-                <h2>Book Your Ride</h2>
-                <p>Choose your service type and enter your details to book your ride instantly</p>
-            </div>
-            <div class="booking-container">
-                <div class="form-tabs">
-                    <div class="form-tab active" data-tab="city-taxi">City Taxi</div>
-                    <div class="form-tab" data-tab="outstation">Outstation</div>
-                    <div class="form-tab" data-tab="rentals">Rentals</div>
-                    <div class="form-tab" data-tab="airport">Airport</div>
-                </div>
-                <form class="booking-form" id="cityTaxiForm">
-                    <div class="form-group">
-                        <label for="pickup-location">Pickup Location</label>
-                        <input type="text" id="pickup-location" class="form-control" placeholder="Enter pickup address">
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="img/city-taxi.png" alt="City Taxi Service">
                     </div>
-                    <div class="form-group">
-                        <label for="drop-location">Drop Location</label>
-                        <input type="text" id="drop-location" class="form-control" placeholder="Enter destination">
+                    <div class="service-content">
+                        <h3>City Taxi</h3>
+                        <p>Get around the city quickly and affordably with our reliable city taxi service. Available 24/7 with professional drivers.</p>
+                        <a href="index.html#booking" class="btn btn-primary">Book Now</a>
                     </div>
-                    <div class="form-group">
-                        <label for="pickup-date">Date</label>
-                        <input type="date" id="pickup-date" class="form-control">
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="img/outstation.avif" alt="Outstation Service">
                     </div>
-                    <div class="form-group">
-                        <label for="pickup-time">Time</label>
-                        <input type="time" id="pickup-time" class="form-control">
+                    <div class="service-content">
+                        <h3>Outstation</h3>
+                        <p>Planning a trip out of town? Our outstation service offers comfortable intercity travel with experienced drivers.</p>
+                        <a href="index.html#booking" class="btn btn-primary">Book Now</a>
                     </div>
-                    <div class="form-group">
-                        <label for="cab-type">Cab Type</label>
-                        <select id="cab-type" class="form-control">
-                            <option value="mini">Mini</option>
-                            <option value="sedan">Sedan</option>
-                            <option value="suv">SUV</option>
-                            <option value="premium">Premium</option>
-                        </select>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="img/rental.avif" alt="Rental Service">
                     </div>
-                    <div class="form-submit">
-                        <button type="button" class="btn btn-primary" id="bookNowBtn">Book Now</button>
+                    <div class="service-content">
+                        <h3>Rentals</h3>
+                        <p>Need a cab for multiple stops? Our rental packages give you flexibility and convenience for all your travel needs.</p>
+                        <a href="index.html#booking" class="btn btn-primary">Book Now</a>
                     </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Get the GoWheels Mobile App</h2>
-                <p>Experience seamless booking, live tracking, and easy payments with our mobile app.</p>
-                <div class="app-buttons">
-                    <a href="#" class="app-button">
-                        <div class="app-icon">📱</div>
-                        <div class="app-button-text">
-                            <span class="app-button-small">Download on the</span>
-                            <span class="app-button-big">App Store</span>
-                        </div>
-                    </a>
-                    <a href="#" class="app-button">
-                        <div class="app-icon">🤖</div>
-                        <div class="app-button-text">
-                            <span class="app-button-small">Get it on</span>
-                            <span class="app-button-big">Google Play</span>
-                        </div>
-                    </a>
                 </div>
             </div>
         </div>
@@ -256,68 +130,6 @@
         </div>
     </footer>
 
-    <!-- Login Modal -->
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Login to Your Account</h2>
-                <button class="close-modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="login-email">Email</label>
-                    <input type="email" id="login-email" class="form-control" placeholder="Enter your email">
-                </div>
-                <div class="form-group">
-                    <label for="login-password">Password</label>
-                    <input type="password" id="login-password" class="form-control" placeholder="Enter your password">
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
-                    <label>
-                        <input type="checkbox"> Remember me
-                    </label>
-                    <a href="#" style="color: var(--primary);">Forgot Password?</a>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn" id="cancelLoginBtn">Cancel</button>
-                <button class="btn btn-primary" id="submitLoginBtn">Login</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Signup Modal -->
-    <div class="modal" id="signupModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Create an Account</h2>
-                <button class="close-modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="signup-name">Full Name</label>
-                    <input type="text" id="signup-name" class="form-control" placeholder="Enter your full name">
-                </div>
-                <div class="form-group">
-                    <label for="signup-email">Email</label>
-                    <input type="email" id="signup-email" class="form-control" placeholder="Enter your email">
-                </div>
-                <div class="form-group">
-                    <label for="signup-phone">Phone Number</label>
-                    <input type="tel" id="signup-phone" class="form-control" placeholder="Enter your phone number">
-                </div>
-                <div class="form-group">
-                    <label for="signup-password">Password</label>
-                    <input type="password" id="signup-password" class="form-control" placeholder="Choose a password">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn" id="cancelSignupBtn">Cancel</button>
-                <button class="btn btn-primary" id="submitSignupBtn">Sign Up</button>
-            </div>
-        </div>
-    </div>
-
-    <script src="app.js"></script>
+    <script type="module" src="js/app.js"></script>
 </body>
 </html>
